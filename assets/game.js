@@ -2,13 +2,17 @@ const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
+const timerText = document.querySelector('#timer');
 const progressBarFull = document.querySelector('#progressBarFull');
+
 
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
+let timer = 0
 let questionCounter = 0
 let availableQuestions = []
+
 
 let questions = [
     {
@@ -20,8 +24,55 @@ let questions = [
         answer: 2,
     },
     {
-        question:
-            "The tallest building in the world is located in which city?",
+        question:"The tallest building in the world is located in which city?",
+        choice1: "Dubai",
+        choice2: "New York",
+        choice3: "Shanghai",
+        choice4: "None of the above",
+        answer: 1,
+    },
+    {
+        question: "What percent of American adults believe that chocolate milk comes from brown cows?",
+        choice1: "20%",
+        choice2: "18%",
+        choice3: "7%",
+        choice4: "33%",
+        answer: 3,
+    },
+    {
+        question: 'What is 2 + 2?',
+        choice1: '2',
+        choice2: '4',
+        choice3: '21',
+        choice4: '17',
+        answer: 2,
+    },
+    {
+        question:"The tallest building in the world is located in which city?",
+        choice1: "Dubai",
+        choice2: "New York",
+        choice3: "Shanghai",
+        choice4: "None of the above",
+        answer: 1,
+    },
+    {
+        question: "What percent of American adults believe that chocolate milk comes from brown cows?",
+        choice1: "20%",
+        choice2: "18%",
+        choice3: "7%",
+        choice4: "33%",
+        answer: 3,
+    },
+    {
+        question: 'What is 2 + 2?',
+        choice1: '2',
+        choice2: '4',
+        choice3: '21',
+        choice4: '17',
+        answer: 2,
+    },
+    {
+        question:"The tallest building in the world is located in which city?",
         choice1: "Dubai",
         choice2: "New York",
         choice3: "Shanghai",
@@ -46,12 +97,14 @@ let questions = [
     }
 ]
 
-const SCORE_POINTS = 100
+const SCORE_POINTS = 10
 const MAX_QUESTIONS = 10
+const TIMER_POINTS = 10
 
 startGame = () => {
     questionCounter = 0
     score = 0
+    timer = 100
     availableQuestions = [...questions]
     getNewQuestion()
 }
@@ -95,6 +148,10 @@ choices.forEach(choice => {
             incrementScore(SCORE_POINTS)
         }
 
+        if(classToApply === 'incorrect') {
+            incrementTimer (TIMER_POINTS)
+        }
+
         selectedChoice.parentElement.classList.add(classToApply)
 
         setTimeout(() => {
@@ -109,5 +166,12 @@ incrementScore = num => {
     score +=num
     scoreText.innerText = score
 }
+
+
+incrementTimer = num=> {
+timer -=num
+timerText.innterText = timer
+}
+
 
 startGame()

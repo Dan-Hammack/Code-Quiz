@@ -2,6 +2,7 @@ body {
     color: #fff;
 }
 
+
 .choice-container {
     display: flex;
     margin-bottom: 0.8rem;
@@ -65,6 +66,10 @@ body {
     height: 100%;
     background: rgb(11,223,36);
     width: 0%;
+}
+
+#timer {
+    
 }
 
 @media screen and (max-width: 768px) {
