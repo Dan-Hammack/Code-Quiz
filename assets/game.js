@@ -174,4 +174,5 @@ timerText.innterText = timer
 }
 
 
+
 startGame()
